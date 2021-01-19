@@ -17,7 +17,7 @@ pip3 install -r requirements.txt
 
 - Run app
 ```shell
-flash run
+flask run
 ```
 
 - Exit virtual environment

@@ -25,28 +25,26 @@ maze = [
 def solveMaze(maze):
     tempMaze = deepcopy(maze)
     initialVector = Node(8, 1, 1)
-    whiteList = [initialVector]
+    queue = [initialVector]
 
-    while len(whiteList) > 0:
-        vector = whiteList.pop()
+    while len(queue) > 0:
+        vector = queue.pop()
         
         if(tempMaze[vector.y-1][vector.x] == 0):
-            whiteList.insert(0, Node(vector.y-1, vector.x, vector.level+1))
+            queue.insert(0, Node(vector.y-1, vector.x, vector.level+1))
             tempMaze[vector.y-1][vector.x] = vector.level
 
         if(tempMaze[vector.y+1][vector.x] == 0):
-            whiteList.insert(0, Node(vector.y+1, vector.x, vector.level+1))
+            queue.insert(0, Node(vector.y+1, vector.x, vector.level+1))
             tempMaze[vector.y+1][vector.x] = vector.level
 
         if(tempMaze[vector.y][vector.x-1] == 0):
-            whiteList.insert(0, Node(vector.y, vector.x-1, vector.level+1))
+            queue.insert(0, Node(vector.y, vector.x-1, vector.level+1))
             tempMaze[vector.y][vector.x-1] = vector.level
 
         if(tempMaze[vector.y][vector.x+1] == 0):
-            whiteList.insert(0, Node(vector.y, vector.x+1, vector.level+1))
+            queue.insert(0, Node(vector.y, vector.x+1, vector.level+1))
             tempMaze[vector.y][vector.x+1] = vector.level  
-
-        vector.level = vector.level + 1
 
     return tempMaze
 

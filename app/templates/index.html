@@ -8,6 +8,8 @@
             var canvas = document.getElementById("canvas");
             var ctx = canvas.getContext('2d');
             var maze = JSON.parse('{{ maze }}'); //Get maze from Flask vars
+            ctx.font = "30px Verdana";
+            ctx.textAlign = "center";
 
             for (var y = 0; y < maze.length; y++) {
                 for (var x = 0; x < maze[y].length; x++) {
@@ -24,16 +26,12 @@
                             ctx.fillStyle = "white";
                             ctx.fillRect(x * 50, y * 50, 50, 50);
                             ctx.fillStyle = "red";
-                            ctx.font = "30px Verdana";
-                            ctx.textAlign = "center";
                             ctx.fillText("X", x * 50 + 25, y * 50 + 35);
                             break;
                         default:
                             ctx.fillStyle = "white";
                             ctx.fillRect(x * 50 + 1, y * 50 + 1, 48, 48);
                             ctx.fillStyle = "red";
-                            ctx.font = "30px Verdana";
-                            ctx.textAlign = "center";
                             ctx.fillText(maze[y][x], x * 50 + 25, y * 50 + 35);
                             break;
                     }
@@ -44,25 +42,38 @@
     </script>
     <style>
         body {
-            background-color: #fcfcfc;
+            background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .center-div {
-            position: absolute;
-            margin: auto;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background-color: #ccc;
-            border-radius: 3px;
+        .card {
+            display: inline-block;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+        }
+
+        .text {
+            background: #FFF;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     </style>
 </head>
 
 <body onload="renderMaze()">
-    <h1>{{ maze }}</h1>
-    <canvas class="center-div" id="canvas" width="500px" height="500px"></canvas>
+
+    <div>
+        <div class="card">
+            <canvas class="center-div card-5" id="canvas" width="500px" height="500px"></canvas>
+            <div class="text">
+                <button type="button"><span>Solve</span></button>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>

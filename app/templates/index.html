@@ -60,6 +60,21 @@
             align-items: center;
             justify-content: center;
         }
+
+        .block {
+            display: block;
+            width: 100%;
+            background-color: white;
+            padding: 14px 28px;
+            font-size: 18px;
+            cursor: pointer;
+            text-align: center;
+            border: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
     </style>
 </head>
 
@@ -67,9 +82,7 @@
     <div>
         <div class="card">
             <canvas class="center-div card-5" id="canvas" width="500px" height="500px"></canvas>
-            <div class="text">
-                <a href="/maze/solved"> <button type="button"><span>Solve</span></button></a>
-            </div>
+            <a href="/maze/solved"> <button class="block" type="button"><span>Solve</span></button></a>
         </div>
     </div>
 </body>

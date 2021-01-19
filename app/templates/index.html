@@ -1,8 +1,68 @@
 <html>
-    <head>
-        <title>{{ title }} - Microblog</title>
-    </head>
-    <body>
-        <h1>Hello, {{ user.username }}!</h1>
-    </body>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF8">
+    <title>Aquiles BFS in Flask</title>
+    <script>
+        function renderMaze() {
+            var canvas = document.getElementById("canvas");
+            var ctx = canvas.getContext('2d');
+            var maze = JSON.parse('{{ maze }}'); //Get maze from Flask vars
+
+            for (var y = 0; y < maze.length; y++) {
+                for (var x = 0; x < maze[y].length; x++) {
+                    switch (maze[y][x]) {
+                        case 0:
+                            ctx.fillStyle = "white";
+                            ctx.fillRect(x * 50 + 1, y * 50 + 1, 48, 48);
+                            break;
+                        case -1:
+                            ctx.fillStyle = "black";
+                            ctx.fillRect(x * 50, y * 50, 50, 50);
+                            break;
+                        case -2:
+                            ctx.fillStyle = "white";
+                            ctx.fillRect(x * 50, y * 50, 50, 50);
+                            ctx.fillStyle = "red";
+                            ctx.font = "30px Verdana";
+                            ctx.textAlign = "center";
+                            ctx.fillText("X", x * 50 + 25, y * 50 + 35);
+                            break;
+                        default:
+                            ctx.fillStyle = "white";
+                            ctx.fillRect(x * 50 + 1, y * 50 + 1, 48, 48);
+                            ctx.fillStyle = "red";
+                            ctx.font = "30px Verdana";
+                            ctx.textAlign = "center";
+                            ctx.fillText(maze[y][x], x * 50 + 25, y * 50 + 35);
+                            break;
+                    }
+                }
+            }
+
+        }
+    </script>
+    <style>
+        body {
+            background-color: #fcfcfc;
+        }
+
+        .center-div {
+            position: absolute;
+            margin: auto;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: #ccc;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+<body onload="renderMaze()">
+    <h1>{{ maze }}</h1>
+    <canvas class="center-div" id="canvas" width="500px" height="500px"></canvas>
+</body>
+
 </html>

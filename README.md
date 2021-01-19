@@ -27,7 +27,7 @@ deactivate
 
 - Update requirements file
 ```shell
-pip freeze > requirements.txt
+pip3 freeze > requirements.txt
 ```
 
 ### References

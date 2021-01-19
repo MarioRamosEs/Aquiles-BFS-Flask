@@ -1,1 +1,2 @@
 FLASK_APP=aquilesbfs.py
+FLASK_ENV=development

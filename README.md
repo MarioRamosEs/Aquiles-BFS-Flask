@@ -2,6 +2,11 @@
 
 ### Commands
 
+- Create virtual environment
+```shell
+python3 -m venv venv
+```
+
 - Enter virtual environment (Unix and Windows)
 ```shell
 source venv/bin/activate

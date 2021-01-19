@@ -24,27 +24,27 @@ maze = [
 
 def solveMaze(maze):
     tempMaze = deepcopy(maze)
-    initialVector = Node(8, 1, 1)
-    queue = [initialVector]
+    initialNode = Node(8, 1, 1) # Hardcoded bc of demo
+    queue = [initialNode]
 
     while len(queue) > 0:
-        vector = queue.pop()
+        node = queue.pop()
         
-        if(tempMaze[vector.y-1][vector.x] == 0):
-            queue.insert(0, Node(vector.y-1, vector.x, vector.level+1))
-            tempMaze[vector.y-1][vector.x] = vector.level
+        if(tempMaze[node.y-1][node.x] == 0):
+            queue.insert(0, Node(node.y-1, node.x, node.level+1))
+            tempMaze[node.y-1][node.x] = node.level
 
-        if(tempMaze[vector.y+1][vector.x] == 0):
-            queue.insert(0, Node(vector.y+1, vector.x, vector.level+1))
-            tempMaze[vector.y+1][vector.x] = vector.level
+        if(tempMaze[node.y+1][node.x] == 0):
+            queue.insert(0, Node(node.y+1, node.x, node.level+1))
+            tempMaze[node.y+1][node.x] = node.level
 
-        if(tempMaze[vector.y][vector.x-1] == 0):
-            queue.insert(0, Node(vector.y, vector.x-1, vector.level+1))
-            tempMaze[vector.y][vector.x-1] = vector.level
+        if(tempMaze[node.y][node.x-1] == 0):
+            queue.insert(0, Node(node.y, node.x-1, node.level+1))
+            tempMaze[node.y][node.x-1] = node.level
 
-        if(tempMaze[vector.y][vector.x+1] == 0):
-            queue.insert(0, Node(vector.y, vector.x+1, vector.level+1))
-            tempMaze[vector.y][vector.x+1] = vector.level  
+        if(tempMaze[node.y][node.x+1] == 0):
+            queue.insert(0, Node(node.y, node.x+1, node.level+1))
+            tempMaze[node.y][node.x+1] = node.level  
 
     return tempMaze
 
